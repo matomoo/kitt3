@@ -62,6 +62,10 @@ const styles: any = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
   },
+  imageLogo: {
+    width: 250,
+    height: 190,
+  },
 });
 
 class Screen extends Component<any, any> {
@@ -78,7 +82,7 @@ class Screen extends Component<any, any> {
     return (
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image style={{width: 250, height: 190}} source={require('../../../../assets/HEC_splash.png')} />
+          <Image style={styles.imageLogo} source={require('../../../../assets/HEC_splash.png')} />
         </View>
         <View style={styles.inputContainer}>
           <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>

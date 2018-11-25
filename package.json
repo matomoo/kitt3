@@ -1,8 +1,8 @@
 {
   "name": "dooboo",
   "version": "0.0.1",
-  "description": "boilerplate for react-native by dooboolab!",
-  "author": "hyochan <dooboolab@gmail.com>",
+  "description": "boilerplate for react-native by mattlab!",
+  "author": "matt <mattlab@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node node_modules/react-native/local-cli/cli.js start",
@@ -33,6 +33,7 @@
     "build:android": "react-native bundle --entry-file index.js --platform android --dev false --bundle-output android/main.jsbundle --assets-dest ./android"
   },
   "dependencies": {
+    "firebase": "^5.0.3",
     "mobx": "^5.5.2",
     "mobx-react": "^5.3.5",
     "moment": "^2.22.2",
