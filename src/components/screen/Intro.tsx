@@ -22,63 +22,6 @@ import User from '../../models/User';
 import { getString } from '../../../STRINGS';
 import Button from '../shared/Button';
 
-const styles: any = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  titleTxt: {
-    marginTop: 100,
-    color: colors.dusk,
-    fontSize: 24,
-  },
-  txtLogin: {
-    fontSize: 14,
-    color: 'white',
-  },
-  imgBtn: {
-    width: 24,
-    height: 24,
-    position: 'absolute',
-    left: 16,
-  },
-  viewUser: {
-    marginTop: 60,
-    alignItems: 'center',
-  },
-  txtUser: {
-    fontSize: 16,
-    color: colors.dusk,
-    lineHeight: 48,
-  },
-  btnBottomWrapper: {
-    position: 'absolute',
-    bottom: 40,
-  },
-  btnLogin: {
-    backgroundColor: colors.dodgerBlue,
-    alignSelf: 'center',
-    borderRadius: 4,
-    width: 320,
-    height: 52,
-
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  btnNavigate: {
-    backgroundColor: 'white',
-    alignSelf: 'center',
-    borderRadius: 4,
-    width: 320,
-    height: 52,
-
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
 interface IProps {
   navigation?: any;
   store: any;
@@ -90,6 +33,7 @@ interface IState {
 
 @inject('store') @observer
 class Page extends Component<IProps, IState> {
+
   private timer: any;
 
   constructor(props) {
@@ -166,3 +110,60 @@ class Page extends Component<IProps, IState> {
 }
 
 export default Page;
+
+const styles: any = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  titleTxt: {
+    marginTop: 100,
+    color: colors.dusk,
+    fontSize: 24,
+  },
+  txtLogin: {
+    fontSize: 14,
+    color: 'white',
+  },
+  imgBtn: {
+    width: 24,
+    height: 24,
+    position: 'absolute',
+    left: 16,
+  },
+  viewUser: {
+    marginTop: 60,
+    alignItems: 'center',
+  },
+  txtUser: {
+    fontSize: 16,
+    color: colors.dusk,
+    lineHeight: 48,
+  },
+  btnBottomWrapper: {
+    position: 'absolute',
+    bottom: 40,
+  },
+  btnLogin: {
+    backgroundColor: colors.dodgerBlue,
+    alignSelf: 'center',
+    borderRadius: 4,
+    width: 320,
+    height: 52,
+
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btnNavigate: {
+    backgroundColor: 'white',
+    alignSelf: 'center',
+    borderRadius: 4,
+    width: 320,
+    height: 52,
+
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

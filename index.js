@@ -6,8 +6,9 @@ import App from './src/';
  */
 YellowBox.ignoreWarnings([
   'Warning: componentWillMount is deprecated',
-  'Warning: componentWillReceiveProps is deprecated',,
+  'Warning: componentWillReceiveProps is deprecated',
   'Module RCTImageLoader',
+  'Setting a timer',
 ]);
 
 AppRegistry.registerComponent('kitt3', () => App);
