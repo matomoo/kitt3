@@ -148,6 +148,7 @@ configurations.all {
 }
 
 dependencies {
+    compile project(':react-native-splash-screen')
     compile project(':react-native-localization')
     implementation project(':react-native-localization')
     implementation fileTree(dir: "libs", include: ["*.jar"])

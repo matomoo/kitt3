@@ -8,7 +8,14 @@ import appStore from './stores/appStore';
 import SwitchNavigator from './components/navigation/SwitchNavigator';
 import { ratio } from './utils/Styles';
 
+import SplashScreen from 'react-native-splash-screen';
+
 class App extends React.Component {
+
+  public componentDidMount() {
+    SplashScreen.hide();
+  }
+
   public render() {
     return (
       <Provider store={ appStore }>
