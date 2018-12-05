@@ -93,6 +93,7 @@ def enableSeparateBuildPerCPUArchitecture = false
  * Run Proguard to shrink the Java bytecode in release builds.
  */
 def enableProguardInReleaseBuilds = false
+// def googlePlayServicesVersion = '11.8.0'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -148,6 +149,7 @@ configurations.all {
 }
 
 dependencies {
+    compile project(':react-native-admob')
     compile project(':react-native-splash-screen')
     compile project(':react-native-localization')
     implementation project(':react-native-localization')

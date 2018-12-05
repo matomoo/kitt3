@@ -14,10 +14,14 @@ import DzikrPetang from './DzikrPetang';
 
 import { ratio, colors } from '../../../utils/Styles';
 
+// الذكر  الهجرة
 const Page = (tabLabel, {label}) => (
   <View style={styles.container}>
-    <Text style={styles.instructions}>
-      Developed by DzikrDaily
+    <Text style={styles.styleS2}>
+      Developed by mattalhijra@2018
+    </Text>
+    <Text style={styles.styleS2}>
+      Email : mattalhijra@gmail.com
     </Text>
   </View>
 );
@@ -44,9 +48,9 @@ class Index extends Component<any, any> {
       );
   }
 
-  public componentDidMount() {
-    console.log('hi');
-  }
+  // public componentDidMount() {
+  //   console.log('hi');
+  // }
 }
 
 export default Index;
@@ -57,5 +61,10 @@ const styles: any = StyleSheet.create({
     backgroundColor: 'transparent',
     // flexDirection: 'column',
     alignItems: 'center',
+  },
+  styleS2: {
+    fontSize: 20,
+    margin: 15,
+    textAlign: 'center',
   },
 });
