@@ -5,6 +5,7 @@ import {
   Image,
   Text,
   View,
+  AsyncStorage,
 } from 'react-native';
 
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
@@ -23,6 +24,9 @@ const Page = (tabLabel, {label}) => (
     <Text style={styles.styleS2}>
       Email : mattalhijra@gmail.com
     </Text>
+    <Text style={styles.styleS2}>
+      Love you, Atiqa Fairuz Khalisa
+    </Text>
   </View>
 );
 
@@ -30,8 +34,6 @@ class Index extends Component<any, any> {
 
   constructor(props) {
     super(props);
-    this.state = {
-    };
   }
 
   public render() {
@@ -42,15 +44,12 @@ class Index extends Component<any, any> {
           <DzikrPagi tabLabel={{label: 'Dzikr Pagi'}} />
           <DzikrPetang tabLabel={{label: 'Dzikr Petang'}} />
           <Page tabLabel={{label: 'Developr'}} />
-          <Page tabLabel={{label: 'Page Demo'}} />
-          <Page tabLabel={{label: 'Page Demo'}} />
+          {/* <Page tabLabel={{label: 'Page Demo'}} />
+          <Page tabLabel={{label: 'Page Demo'}} /> */}
         </ScrollableTabView>
       );
   }
 
-  // public componentDidMount() {
-  //   console.log('hi');
-  // }
 }
 
 export default Index;

@@ -6,18 +6,57 @@ import {
   Text,
   View,
   ScrollView,
+  AsyncStorage,
 } from 'react-native';
 
 import { ratio, colors } from '../../../utils/Styles';
 import dataDzikrPetang from './DataDzikrPetang';
+import { observer } from 'mobx-react';
+import { inject } from 'mobx-react/native';
 
-class DzikrPetang extends Component<any, any> {
+interface IProps {
+  navigation?: any;
+  store: any;
+}
+
+interface IState {
+  // isLoggingIn: boolean;
+  isLoading;
+  switch1Value;
+  switch2Value;
+  switch3Value;
+}
+
+@inject('store') @observer
+class DzikrPetang extends Component<IProps, IState> {
   private static navigationOptions = {
     title: 'Dzikr Petang',
   };
 
   constructor(props) {
     super(props);
+    this.state = {
+      isLoading: '',
+      switch1Value: '',
+      switch2Value: '',
+      switch3Value: '',
+    };
+  }
+
+  public componentDidMount() {
+    this._fetchData();
+  }
+
+  public async _fetchData() {
+    const userSetting = this.props.store.userSetting.asyncUserSetting;
+    const a = JSON.parse(userSetting);
+    this.setState({
+      switch1Value: a.s1,
+      switch2Value: a.s2,
+      switch3Value: a.s3,
+    });
+    // console.log('get', a);
+    // this.forceUpdate();
   }
 
   public render() {
@@ -30,11 +69,15 @@ class DzikrPetang extends Component<any, any> {
         <Text style={styles.styleS2}>بِسْــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْـــــمِ</Text>
           { dataDzikrPetang.map((el, key) =>
             <View style={styles.cardS1} key={key}>
-              <Text style={styles.styleS3}>{el.row5}</Text>
-              <Text style={styles.styleS1}>{el.row1}</Text>
-              <Text style={styles.styleS4}>{el.row2}</Text>
-              <Text style={styles.styleS5}>{el.row3}</Text>
-            </View>,
+            <Text style={styles.styleS3}>{el.row5}</Text>
+            <Text style={styles.styleS1}>{el.row1}</Text>
+            { !!this.state.switch1Value &&
+              <Text style={styles.styleS4}>{el.row2}</Text>}
+            { !!this.state.switch2Value &&
+              <Text style={styles.styleS5}>{el.row3}</Text>}
+            { !!this.state.switch3Value &&
+            <Text style={styles.styleS5}>{el.row6}</Text>}
+          </View>,
           )}
           <Text style={styles.styleS2}>
             Dinukil dari buku Doa Dan Wirid halaman 133- 155 yang disusun oleh Ustadz Yazid bin Abdul Qadir Jawas,

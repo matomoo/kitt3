@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import IntroScreen from '../screen/Intro';
 import NotFoundScreen from '../screen/NotFound';
 import Home from '../screen/Home';
+import Setting from '../screen/Settings/Setting';
 
 // Set here for tabNavigator content
 const BottomTabNavigator = createBottomTabNavigator(
@@ -49,25 +50,37 @@ const routeConfig = {
       // headerBackTitle: null,
     }),
   },
+  Home: { screen: Home,
+    path: 'Home',
+    navigationOptions: {
+      title: 'Dzikr App',
+    },
+  },
+  Setting: { screen: Setting,
+    path: 'Setting',
+    navigationOptions: {
+      title: 'Setting',
+    },
+  },
 };
 
 const navigatorConfig = {
-  initialRouteName: 'BottomTabNavigator',
+  initialRouteName: 'Home',
   // header: null,
   // gesturesEnabled: true,
   // statusBarStyle: 'light-content',
   navigationOptions: {
     headerStyle: {
       // headerBackTitle: null,
-      backgroundColor: colors.dodgerBlue,
+      backgroundColor: '#79b700',
       borderBottomColor: 'transparent',
-      borderBottomWidth: 0,
-      elevation: 0,
+      borderBottomWidth: 1,
+      elevation: 1,
     },
     // title: 'Dzikr App',
     headerMode: 'screen',
-    headerTitleStyle: { color: 'white' },
-    headerTintColor: 'white',
+    headerTitleStyle: { color: '#e4ff54' },
+    // headerTintColor: 'white',
   },
 };
 

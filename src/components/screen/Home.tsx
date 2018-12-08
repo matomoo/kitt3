@@ -8,16 +8,20 @@ import {
   View,
 } from 'react-native';
 import { AdMobBanner } from 'react-native-admob';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import { ratio, colors } from '../../utils/Styles';
 import Dzikr from './Dzikr/Index';
+
 interface IProps {
   navigation?: any;
 }
 
 interface IState {
   // isLoggingIn: boolean;
-  email;
-  password;
+  // email;
+  // password;
+  msg;
 }
 
 // const BannerExample = ({ title, children, ...props }) => (
@@ -30,17 +34,27 @@ interface IState {
 // );
 
 class Screen extends Component<IProps, IState> {
-  protected static navigationOptions = ({ navigation }) => ({
+
+  public static navigationOptions = ({ navigation }) => ({
     title: 'Dzikr App',
+    headerRight: (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Setting') }
+        style={styles.headerR}
+      >
+        <Icon name='cogs' size={25} color='#aeea00'/>
+        {/* // ellipsis-v */}
+        {/* <Text>Settings</Text> */}
+      </TouchableOpacity>
+      ),
   })
 
   constructor(props) {
     super(props);
+    this.state = {
+      msg: '',
+    };
   }
-
-  // public bannerError() {
-  //   console.log();
-  // }
 
   public render() {
     const BANNER_ID = 'ca-app-pub-8669040813100138/4302331659';
@@ -56,7 +70,7 @@ class Screen extends Component<IProps, IState> {
           style={styles.container2}
           // style={styles.footer}
         >
-          {/* <Text>Reverved Ads</Text> */}
+          {/* <Text>{ this.state.msg }</Text> */}
           <AdMobBanner
                 adSize='smartBanner'
                 adUnitID={BANNER_ID}
@@ -68,6 +82,12 @@ class Screen extends Component<IProps, IState> {
       </View>
     );
   }
+
+  // private bannerError( msg ) {
+  //   this.setState =  ({
+  //     msg,
+  //   });
+  // }
 }
 
 export default Screen;
@@ -91,14 +111,9 @@ const styles: any = StyleSheet.create({
     width: '100%',
     height: 52,
     maxHeight: 52,
-  },
-  footer: {
-    position: 'absolute',
     backgroundColor: 'white',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: 52,
-    maxHeight: 55,
+  },
+  headerR: {
+    marginRight: 10,
   },
 });

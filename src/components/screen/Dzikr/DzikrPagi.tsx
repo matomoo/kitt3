@@ -6,18 +6,58 @@ import {
   Text,
   View,
   ScrollView,
+  AsyncStorage,
 } from 'react-native';
 
 import { ratio, colors } from '../../../utils/Styles';
 import dataDzikrPagi from './DataDzikrPagi';
+import { observer } from 'mobx-react';
+import { inject } from 'mobx-react/native';
 
-class DzikrPagi extends Component<any, any> {
+interface IProps {
+  navigation?: any;
+  store: any;
+}
+
+interface IState {
+  // isLoggingIn: boolean;
+  isLoading;
+  switch1Value;
+  switch2Value;
+  switch3Value;
+}
+
+@inject('store') @observer
+class DzikrPagi extends Component<IProps, IState> {
   private static navigationOptions = {
     title: 'Dzikr Pagi',
   };
 
   constructor(props) {
     super(props);
+    this.state = {
+      isLoading: '',
+      switch1Value: '',
+      switch2Value: '',
+      switch3Value: '',
+    };
+  }
+
+  public componentDidMount() {
+    this._fetchData();
+  }
+
+  public _fetchData() {
+    const userSetting = this.props.store.userSetting.asyncUserSetting;
+    console.log('dzikr pagi', userSetting);
+    const a = JSON.parse(userSetting);
+    this.setState({
+      switch1Value: a.s1,
+      switch2Value: a.s2,
+      switch3Value: a.s3,
+    });
+    console.log(this.props.store.userSetting.appSet1);
+    // this.forceUpdate();
   }
 
   public render() {
@@ -25,6 +65,7 @@ class DzikrPagi extends Component<any, any> {
       <ScrollView
         // style={styles.container}
         >
+        <Text>{this.props.store.userSetting.asyncUserSetting}</Text>
         <Text style={styles.styleS2}>Bacaan Dzikr Pagi</Text>
         <Text style={styles.styleS2}>أَعُوْذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيْمِ</Text>
         <Text style={styles.styleS2}>بِسْــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْـــــمِ</Text>
@@ -32,8 +73,12 @@ class DzikrPagi extends Component<any, any> {
             <View style={styles.cardS1} key={key}>
               <Text style={styles.styleS3}>{el.row5}</Text>
               <Text style={styles.styleS1}>{el.row1}</Text>
-              <Text style={styles.styleS4}>{el.row2}</Text>
-              <Text style={styles.styleS5}>{el.row3}</Text>
+              { !!this.props.store.userSetting.appSet1 &&
+                <Text style={styles.styleS4}>{el.row2}</Text>}
+              { !!this.props.store.userSetting.appSet2 &&
+                <Text style={styles.styleS5}>{el.row3}</Text>}
+              { !!this.props.store.userSetting.appSet3 &&
+              <Text style={styles.styleS5}>{el.row6}</Text>}
             </View>,
           )}
           <Text style={styles.styleS2}>

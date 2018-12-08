@@ -9,9 +9,10 @@ import {
   AsyncStorage,
   StatusBar,
 } from 'react-native';
-
 import { ratio, colors } from '../../../utils/Styles';
-
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
+import { inject } from 'mobx-react/native';
 const styles: any = StyleSheet.create({
   container: {
     flex: 1,
@@ -21,12 +22,30 @@ const styles: any = StyleSheet.create({
   },
 });
 
-class Screen extends Component<any, any> {
+interface IProps {
+  navigation?: any;
+  store: any;
+}
+
+interface IState {
+  isLoggingIn: boolean;
+  switch1Value;
+  switch2Value;
+  switch3Value;
+}
+
+@inject('store') @observer
+class Screen extends Component<IProps, IState> {
 
   constructor(props) {
     super(props);
     this._bootstrapAsync();
+    // this._fetchData();
     this.state = {
+      isLoggingIn: false,
+      switch1Value: '',
+      switch2Value: '',
+      switch3Value: '',
     };
   }
 
@@ -42,10 +61,14 @@ class Screen extends Component<any, any> {
   // Fetch the token from storage then navigate to our appropriate place
   private _bootstrapAsync = async () => {
     // const userToken = await AsyncStorage.getItem('userToken');
-
     // This will switch to the App screen or Auth screen and this loading
     // screen will be unmounted and thrown away.
     // this.props.navigation.navigate(userToken ? 'App' : 'Auth');
+    const userSetting = await AsyncStorage.getItem('userSetting');
+    const a = JSON.parse(userSetting);
+    this.props.store.userSetting.asyncUserSetting = userSetting;
+    // console.log('authe', this.props.store.userSetting.asyncUserSetting);
+
     this.props.navigation.navigate('App');
   }
 }

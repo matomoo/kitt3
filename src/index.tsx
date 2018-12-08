@@ -5,6 +5,7 @@ import { Provider } from 'mobx-react';
 import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
 
 import appStore from './stores/appStore';
+import appDomain from './stores/appDomain';
 import SwitchNavigator from './components/navigation/SwitchNavigator';
 import { ratio } from './utils/Styles';
 
