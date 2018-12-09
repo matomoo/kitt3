@@ -48,7 +48,8 @@ class Screen extends Component<IProps, IState> {
 
   public async _fetchData() {
     const userSetting = await AsyncStorage.getItem('userSetting');
-    const a = JSON.parse(userSetting);
+    const a1 = userSetting === null ? '{"s1":true,"s2":true,"s3":true}' : userSetting;
+    const a = JSON.parse(a1);
     this.setState({
       switch1Value: a.s1,
       switch2Value: a.s2,

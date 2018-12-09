@@ -12,21 +12,22 @@ import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab
 import TabBar from 'react-native-underline-tabbar';
 import DzikrPagi from './DzikrPagi';
 import DzikrPetang from './DzikrPetang';
+import { APP_MASK } from '../../../utils/Icons';
 
 import { ratio, colors } from '../../../utils/Styles';
 
 // الذكر  الهجرة
 const Page = (tabLabel, {label}) => (
   <View style={styles.container}>
-    <Text style={styles.styleS2}>
-      Developed by mattalhijra@2018
-    </Text>
-    <Text style={styles.styleS2}>
-      Email : mattalhijra@gmail.com
-    </Text>
-    <Text style={styles.styleS2}>
-      Love you, Atiqa Fairuz Khalisa
-    </Text>
+    <View style={styles.header} />
+    <Image style={styles.avatar} source={APP_MASK}/>
+    <View style={styles.body}>
+      <View style={styles.bodyContent}>
+        {/* <Text style={styles.name2}>متى الهجرة</Text> */}
+        <Text style={styles.description}>Mattalhijra developer</Text>
+        <Text style={styles.info}>mattalhijra@gmail.com</Text>
+      </View>
+  </View>
   </View>
 );
 
@@ -61,9 +62,59 @@ const styles: any = StyleSheet.create({
     // flexDirection: 'column',
     alignItems: 'center',
   },
-  styleS2: {
-    fontSize: 20,
-    margin: 15,
+  header: {
+    backgroundColor: '#00BFFF',
+    height: 200,
+  },
+  avatar: {
+    width: 130,
+    height: 130,
+    borderRadius: 63,
+    borderWidth: 4,
+    borderColor: 'white',
+    marginBottom: 10,
+    alignSelf: 'center',
+    position: 'absolute',
+    marginTop: 130,
+  },
+  name: {
+    fontSize: 22,
+    color: '#FFFFFF',
+    fontWeight: '600',
+  },
+  body: {
+    marginTop: 40,
+  },
+  bodyContent: {
+    flex: 1,
+    alignItems: 'center',
+    padding: 30,
+  },
+  name2: {
+    fontSize: 28,
+    color: '#696969',
+    fontWeight: '600',
+  },
+  info: {
+    fontSize: 16,
+    color: '#00BFFF',
+    marginTop: 10,
+  },
+  description: {
+    fontSize: 16,
+    color: '#696969',
+    marginTop: 10,
     textAlign: 'center',
+  },
+  buttonContainer: {
+    marginTop: 10,
+    height: 45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    width: 250,
+    borderRadius: 30,
+    backgroundColor: '#00BFFF',
   },
 });

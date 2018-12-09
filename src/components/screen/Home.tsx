@@ -71,13 +71,13 @@ class Screen extends Component<IProps, IState> {
           // style={styles.footer}
         >
           {/* <Text>{ this.state.msg }</Text> */}
-          <AdMobBanner
+          {/* <AdMobBanner
                 adSize='smartBanner'
                 adUnitID={BANNER_ID}
                 testDevices={[AdMobBanner.simulatorId]}
                 didFailToReceiveAdWithError={(error) => console.log(error)}
                 onAdFailedToLoad={(error) => console.log(error)}
-          />
+          /> */}
         </View>
       </View>
     );
@@ -109,8 +109,8 @@ const styles: any = StyleSheet.create({
   container2: {
     flex: 1,
     width: '100%',
-    height: 52,
-    maxHeight: 52,
+    height: 0,
+    maxHeight: 0,
     backgroundColor: 'white',
   },
   headerR: {

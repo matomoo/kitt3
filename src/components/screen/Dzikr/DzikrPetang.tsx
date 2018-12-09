@@ -16,15 +16,16 @@ import { inject } from 'mobx-react/native';
 
 interface IProps {
   navigation?: any;
-  store: any;
+  store?: any;
+  tabLabel?;
 }
 
 interface IState {
   // isLoggingIn: boolean;
   isLoading;
-  switch1Value;
-  switch2Value;
-  switch3Value;
+  // switch1Value;
+  // switch2Value;
+  // switch3Value;
 }
 
 @inject('store') @observer
@@ -37,27 +38,27 @@ class DzikrPetang extends Component<IProps, IState> {
     super(props);
     this.state = {
       isLoading: '',
-      switch1Value: '',
-      switch2Value: '',
-      switch3Value: '',
+      // switch1Value: '',
+      // switch2Value: '',
+      // switch3Value: '',
     };
   }
 
-  public componentDidMount() {
-    this._fetchData();
-  }
+  // public componentDidMount() {
+  //   this._fetchData();
+  // }
 
-  public async _fetchData() {
-    const userSetting = this.props.store.userSetting.asyncUserSetting;
-    const a = JSON.parse(userSetting);
-    this.setState({
-      switch1Value: a.s1,
-      switch2Value: a.s2,
-      switch3Value: a.s3,
-    });
-    // console.log('get', a);
-    // this.forceUpdate();
-  }
+  // public async _fetchData() {
+  //   const userSetting = this.props.store.userSetting.asyncUserSetting;
+  //   const a = JSON.parse(userSetting);
+  //   this.setState({
+  //     switch1Value: a.s1,
+  //     switch2Value: a.s2,
+  //     switch3Value: a.s3,
+  //   });
+  //   // console.log('get', a);
+  //   // this.forceUpdate();
+  // }
 
   public render() {
     return (
@@ -71,11 +72,11 @@ class DzikrPetang extends Component<IProps, IState> {
             <View style={styles.cardS1} key={key}>
             <Text style={styles.styleS3}>{el.row5}</Text>
             <Text style={styles.styleS1}>{el.row1}</Text>
-            { !!this.state.switch1Value &&
+            { !!this.props.store.userSetting.appSet1 &&
               <Text style={styles.styleS4}>{el.row2}</Text>}
-            { !!this.state.switch2Value &&
+            { !!this.props.store.userSetting.appSet2 &&
               <Text style={styles.styleS5}>{el.row3}</Text>}
-            { !!this.state.switch3Value &&
+            { !!this.props.store.userSetting.appSet3 &&
             <Text style={styles.styleS5}>{el.row6}</Text>}
           </View>,
           )}

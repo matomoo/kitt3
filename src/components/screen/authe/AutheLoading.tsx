@@ -65,8 +65,8 @@ class Screen extends Component<IProps, IState> {
     // screen will be unmounted and thrown away.
     // this.props.navigation.navigate(userToken ? 'App' : 'Auth');
     const userSetting = await AsyncStorage.getItem('userSetting');
-    const a = JSON.parse(userSetting);
-    this.props.store.userSetting.asyncUserSetting = userSetting;
+    const a = userSetting === null ? '{"s1":true,"s2":true,"s3":true}' : userSetting;
+    this.props.store.userSetting.asyncUserSetting = a;
     // console.log('authe', this.props.store.userSetting.asyncUserSetting);
 
     this.props.navigation.navigate('App');

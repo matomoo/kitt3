@@ -16,15 +16,16 @@ import { inject } from 'mobx-react/native';
 
 interface IProps {
   navigation?: any;
-  store: any;
+  store?: any;
+  tabLabel?;
 }
 
 interface IState {
   // isLoggingIn: boolean;
   isLoading;
-  switch1Value;
-  switch2Value;
-  switch3Value;
+  // switch1Value;
+  // switch2Value;
+  // switch3Value;
 }
 
 @inject('store') @observer
@@ -37,35 +38,34 @@ class DzikrPagi extends Component<IProps, IState> {
     super(props);
     this.state = {
       isLoading: '',
-      switch1Value: '',
-      switch2Value: '',
-      switch3Value: '',
+      // switch1Value: '',
+      // switch2Value: '',
+      // switch3Value: '',
     };
   }
 
-  public componentDidMount() {
-    this._fetchData();
-  }
+  // public componentDidMount() {
+  //   this._fetchData();
+  // }
 
-  public _fetchData() {
-    const userSetting = this.props.store.userSetting.asyncUserSetting;
-    console.log('dzikr pagi', userSetting);
-    const a = JSON.parse(userSetting);
-    this.setState({
-      switch1Value: a.s1,
-      switch2Value: a.s2,
-      switch3Value: a.s3,
-    });
-    console.log(this.props.store.userSetting.appSet1);
-    // this.forceUpdate();
-  }
+  // public _fetchData() {
+  //   const userSetting = this.props.store.userSetting.asyncUserSetting;
+  //   console.log('dzikr pagi', userSetting);
+  //   const a = JSON.parse(userSetting);
+  //   this.setState({
+  //     switch1Value: a.s1,
+  //     switch2Value: a.s2,
+  //     switch3Value: a.s3,
+  //   });
+  //   console.log(this.props.store.userSetting.appSet1);
+  //   // this.forceUpdate();
+  // }
 
   public render() {
     return (
       <ScrollView
         // style={styles.container}
         >
-        <Text>{this.props.store.userSetting.asyncUserSetting}</Text>
         <Text style={styles.styleS2}>Bacaan Dzikr Pagi</Text>
         <Text style={styles.styleS2}>أَعُوْذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيْمِ</Text>
         <Text style={styles.styleS2}>بِسْــــــــــــــمِ اللهِ الرَّحْمَنِ الرَّحِيْـــــمِ</Text>

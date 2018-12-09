@@ -15,7 +15,7 @@ class UserSetting {
 
   public get appSet1(): string {
     const a = JSON.parse(this._asyncUserSetting);
-    // console.log(a, a.s1);
+    // console.log('setting', a, a.s1);
     return this._appSet1 = a.s1;
   }
 
